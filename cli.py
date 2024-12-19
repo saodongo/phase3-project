@@ -17,8 +17,8 @@ def init_db():
 def create_buyer():
     # Create new buyer
     name = input("Enter Buyer name: ")
-    contact = input("Enter Buyer contact: ")
-    buyer = Buyer(name=name, contact=contact)
+    email = input("Enter Buyer email: ")
+    buyer = Buyer(name=name, email=email)
     session.add(buyer)
     session.commit()
     print(f"Buyer '{name}' created with ID {buyer.id}")
@@ -30,7 +30,7 @@ def update_buyer():
         print(f"Buyer with ID {buyer_id} does not exist.")
         return
     buyer.name = input(f"Enter new name for buyer (current: {buyer.name}): ") or buyer.name
-    buyer.contact = input(f"Enter new contact for Buyer (current: {buyer.contact}): ") or buyer.contact
+    buyer.email = input(f"Enter new email for Buyer (current: {buyer.email}): ") or buyer.email
     session.commit()
     print(f"Buyer ID {buyer_id} updated successfully")
 
@@ -129,19 +129,20 @@ def view_items_by_buyer():
         print(item)
 
 def main_menu():
+    print("\nWelcome to the Application. What would you like to do?")
+    print("1. Create Buyer")
+    print("2. Update Buyer")
+    print("3. Delete Buyer")
+    print("4. Create Item")
+    print("5. Update Item")
+    print("6. Delete Item")
+    print("7. Assign Item to Buyer")
+    print("8. List Buyers")
+    print("9. List Items")
+    print("10. View Items by Buyer")
+    print("11. Exit")
     while True:
-        print("\nWelcome to the Application. What would you like to do?")
-        print("1. Create Buyer")
-        print("2. Update Buyer")
-        print("3. Delete Buyer")
-        print("4. Create Item")
-        print("5. Update Item")
-        print("6. Delete Item")
-        print("7. Assign Item to Buyer")
-        print("8. List Buyers")
-        print("9. List Items")
-        print("10. View Items by Buyer")
-        print("11. Exit")
+      
         choice = input("Enter your choice: ")
 
         if choice == "1":
